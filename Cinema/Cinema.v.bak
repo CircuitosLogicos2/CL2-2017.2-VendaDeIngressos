@@ -1,0 +1,290 @@
+module Cinema(input [17:0]SW, input clk, output reg [17:0]LEDR , input [3:0]KEY, output [7:0]HEX0,
+			  output [7:0]HEX4, output [7:0]HEX5, output [7:0]HEX6, output [7:0]HEX7, output [7:0]HEX1, output [7:0]HEX2, output [7:0]HEX3);
+
+integer filmeEscolhido = 0;
+integer filme = 0;
+integer horarioEscolhido = 0;
+integer horario = 0;
+integer assentoEscolhido = 0;
+reg [17:0] assento11 = 18'b000000000000000000;
+reg [17:0] assento12 =   18'b000000000000000000;
+reg [17:0] assento21 = 18'b000000000000000000;
+reg [17:0] assento22 = 18'b000000000000000000;
+integer valorInserido = 0;
+integer valor = 0;
+integer pago = 0;
+integer quantidadeDeIngresso = 0;
+integer trocoFeito = 0;
+integer troco = 0;
+integer dinheiroFeito = 0;
+reg [7:0]F = 4'hF;
+reg [7:0]H = 4'hC; // pq nao pode H
+reg [7:0]dFilme = 4'h0;
+reg [7:0]dHorario = 4'h0;
+reg [7:0]display1 = 4'h0;
+reg [7:0]display2 = 4'h0;
+reg [7:0]display3 = 4'h0;
+reg [7:0]display4 = 4'h0;
+integer essaMerda = 0;
+integer essaMerda2 = 0;
+
+
+always@(posedge clk) begin
+    if(!filmeEscolhido && essaMerda == 0) begin
+        if(KEY == 4'b1110) begin
+            filme = 1;
+            filmeEscolhido = 1;
+            dFilme = 4'h1;
+            essaMerda = 1;
+        end
+        if(KEY == 4'b1101) begin
+            filme = 2;
+            filmeEscolhido = 1;
+            dFilme = 4'h2;
+            //essaMerda2 = 1;
+        end
+    end
+    if(!horarioEscolhido && filmeEscolhido == 1) begin
+        if(KEY == 4'b1011) begin
+            horario = 1;
+            horarioEscolhido = 1;
+            dHorario = 4'h1;
+            display1 = 4'h1;
+            display2 = 4'h4;
+            display3 = 4'h0;
+            display4 = 4'h0;
+        end
+        if(KEY == 4'b0111) begin
+            horario = 2;
+            horarioEscolhido = 1;
+            dHorario = 4'h2;
+            display1 = 4'h1;
+            display2 = 4'h6;
+            display3 = 4'h0;
+            display4 = 4'h0;
+        end
+    end
+    quantidadeDeIngresso=0;
+    if(!assentoEscolhido && horarioEscolhido == 1) begin
+        integer i;
+        LEDR = 18'b111111111111111111;
+        for (i = 0; i<18; i = i + 1) begin
+            if(SW[i] == 1) quantidadeDeIngresso = quantidadeDeIngresso + 1;
+        end
+        valor = quantidadeDeIngresso * 15;
+        if(KEY == 4'b0111) begin            
+            assentoEscolhido <= 1;
+            if(filme == 1 && horario == 1) assento11 <= assento11 + SW;
+            if(filme == 1 && horario == 2) assento12 <= assento12 + SW;
+            if(filme == 2 && horario == 1) assento21 <= assento21 + SW;
+            if(filme == 2 && horario == 2) assento22 <= assento22 + SW;
+        end
+    end
+
+    if(filme == 1 && horario == 1)begin
+		LEDR = ~assento11;
+		essaMerda = 0;
+	end
+    if(filme == 1 && horario == 2)begin
+		LEDR = ~assento12;
+		essaMerda = 0;
+    end
+    if(filme == 2 && horario == 1)begin
+		LEDR = ~assento21;
+		//essaMerda2 = 0;
+	end
+    if(filme == 2 && horario == 2)begin
+		LEDR = ~assento22;
+		//essaMerda2 = 0;
+	end
+
+    if (!dinheiroFeito && assentoEscolhido == 1) begin
+        if(KEY == 4'b1110) begin
+            valorInserido = valorInserido + 5;
+        end
+        if(KEY == 4'b1101) begin
+            valorInserido = valorInserido + 10;
+        end
+        if(KEY == 4'b1011) begin
+            valorInserido = valorInserido + 20;
+        end
+        if(KEY == 4'b0111) begin
+            valorInserido = valorInserido + 50;
+        end
+        if(valor == valorInserido) begin
+			dinheiroFeito=1;
+			pago = 1;
+		end
+		
+		if (valor < valorInserido && !trocoFeito) begin
+			trocoFeito = 1;
+			troco = valorInserido - valor;
+			dinheiroFeito=1;
+			pago = 1;
+		end
+    end
+    
+    if(pago == 1) begin
+		filmeEscolhido <= 0;
+		horarioEscolhido <= 0;
+		horario <= 0;
+		assentoEscolhido <= 0;
+		valorInserido <= 0;
+		valor <= 0;
+		pago <= 0;
+		quantidadeDeIngresso <= 0;
+		trocoFeito <= 0;
+		troco <= 0;
+		dinheiroFeito <= 0;
+		pago <= 0;
+		//LEDR = 18'b000000000000000000;
+
+	end
+end
+
+reg [7:0] SevenSeg; // auxiliar
+	always @(*)
+	case(F) // variavel q vai mudar o negocio
+		4'h0: SevenSeg = 8'b11111100;
+		4'h1: SevenSeg = 8'b01100000;
+		4'h2: SevenSeg = 8'b11011010;
+		4'h3: SevenSeg = 8'b11110010;
+		4'h4: SevenSeg = 8'b01100110;
+		4'h5: SevenSeg = 8'b10110110;
+		4'h6: SevenSeg = 8'b10111110;
+		4'h7: SevenSeg = 8'b11100000;
+		4'h8: SevenSeg = 8'b11111110;
+		4'h9: SevenSeg = 8'b11110110;
+		4'hF: SevenSeg = 8'b10001110;
+		default: SevenSeg = 8'b00000000;
+	endcase
+	assign {HEX7[0], HEX7[1], HEX7[2], HEX7[3], HEX7[4], HEX7[5], HEX7[6], HEX7[7]} = ~SevenSeg;
+	
+	reg [7:0] SevenSeg1; // auxiliar
+	always @(*)
+	case(H) // variavel q vai mudar o negocio
+		4'h0: SevenSeg1 = 8'b11111100;
+		4'h1: SevenSeg1 = 8'b01100000;
+		4'h2: SevenSeg1 = 8'b11011010;
+		4'h3: SevenSeg1 = 8'b11110010;
+		4'h4: SevenSeg1 = 8'b01100110;
+		4'h5: SevenSeg1 = 8'b10110110;
+		4'h6: SevenSeg1 = 8'b10111110;
+		4'h7: SevenSeg1 = 8'b11100000;
+		4'h8: SevenSeg1 = 8'b11111110;
+		4'h9: SevenSeg1 = 8'b11110110;
+		4'hC: SevenSeg1 = 8'b01101110;
+		default: SevenSeg1 = 8'b00000000;
+	endcase
+	assign {HEX5[0], HEX5[1], HEX5[2], HEX5[3], HEX5[4], HEX5[5], HEX5[6], HEX5[7]} = ~SevenSeg1;
+	
+	reg [7:0] SevenSeg2; // auxiliar
+	always @(*)
+	case(dFilme) // variavel q vai mudar o negocio
+		4'h0: SevenSeg2 = 8'b11111100;
+		4'h1: SevenSeg2 = 8'b01100000;
+		4'h2: SevenSeg2 = 8'b11011010;
+		4'h3: SevenSeg2 = 8'b11110010;
+		4'h4: SevenSeg2 = 8'b01100110;
+		4'h5: SevenSeg2 = 8'b10110110;
+		4'h6: SevenSeg2 = 8'b10111110;
+		4'h7: SevenSeg2 = 8'b11100000;
+		4'h8: SevenSeg2 = 8'b11111110;
+		4'h9: SevenSeg2 = 8'b11110110;
+		4'hC: SevenSeg2 = 8'b01101110;
+		default: SevenSeg2 = 8'b00000000;
+	endcase
+	assign {HEX6[0], HEX6[1], HEX6[2], HEX6[3], HEX6[4], HEX6[5], HEX6[6], HEX6[7]} = ~SevenSeg2;
+	
+	reg [7:0] SevenSeg3; // auxiliar
+	always @(*)
+	case(dHorario) // variavel q vai mudar o negocio
+		4'h0: SevenSeg3 = 8'b11111100;
+		4'h1: SevenSeg3 = 8'b01100000;
+		4'h2: SevenSeg3 = 8'b11011010;
+		4'h3: SevenSeg3 = 8'b11110010;
+		4'h4: SevenSeg3 = 8'b01100110;
+		4'h5: SevenSeg3 = 8'b10110110;
+		4'h6: SevenSeg3 = 8'b10111110;
+		4'h7: SevenSeg3 = 8'b11100000;
+		4'h8: SevenSeg3 = 8'b11111110;
+		4'h9: SevenSeg3 = 8'b11110110;
+		4'hC: SevenSeg3 = 8'b01101110;
+		default: SevenSeg3 = 8'b00000000;
+	endcase
+	assign {HEX4[0], HEX4[1], HEX4[2], HEX4[3], HEX4[4], HEX4[5], HEX4[6], HEX4[7]} = ~SevenSeg3;
+	
+	reg [7:0] SevenSeg4; // auxiliar
+	always @(*)
+	case(display1) // variavel q vai mudar o negocio
+		4'h0: SevenSeg4 = 8'b11111100;
+		4'h1: SevenSeg4 = 8'b01100000;
+		4'h2: SevenSeg4 = 8'b11011010;
+		4'h3: SevenSeg4 = 8'b11110010;
+		4'h4: SevenSeg4 = 8'b01100110;
+		4'h5: SevenSeg4 = 8'b10110110;
+		4'h6: SevenSeg4 = 8'b10111110;
+		4'h7: SevenSeg4 = 8'b11100000;
+		4'h8: SevenSeg4 = 8'b11111110;
+		4'h9: SevenSeg4 = 8'b11110110;
+		4'hC: SevenSeg4 = 8'b01101110;
+		default: SevenSeg4 = 8'b00000000;
+	endcase
+	assign {HEX3[0], HEX3[1], HEX3[2], HEX3[3], HEX3[4], HEX3[5], HEX3[6], HEX3[7]} = ~SevenSeg4;
+	
+	reg [7:0] SevenSeg5; // auxiliar
+	always @(*)
+	case(display2) // variavel q vai mudar o negocio
+		4'h0: SevenSeg5 = 8'b11111100;
+		4'h1: SevenSeg5 = 8'b01100000;
+		4'h2: SevenSeg5 = 8'b11011010;
+		4'h3: SevenSeg5 = 8'b11110010;
+		4'h4: SevenSeg5 = 8'b01100110;
+		4'h5: SevenSeg5 = 8'b10110110;
+		4'h6: SevenSeg5 = 8'b10111110;
+		4'h7: SevenSeg5 = 8'b11100000;
+		4'h8: SevenSeg5 = 8'b11111110;
+		4'h9: SevenSeg5 = 8'b11110110;
+		4'hC: SevenSeg5 = 8'b01101110;
+		default: SevenSeg5 = 8'b00000000;
+	endcase
+	assign {HEX2[0], HEX2[1], HEX2[2], HEX2[3], HEX2[4], HEX2[5], HEX2[6], HEX2[7]} = ~SevenSeg5;
+	
+	reg [7:0] SevenSeg6; // auxiliar
+	always @(*)
+	case(display3) // variavel q vai mudar o negocio
+		4'h0: SevenSeg6 = 8'b11111100;
+		4'h1: SevenSeg6 = 8'b01100000;
+		4'h2: SevenSeg6 = 8'b11011010;
+		4'h3: SevenSeg6 = 8'b11110010;
+		4'h4: SevenSeg6 = 8'b01100110;
+		4'h5: SevenSeg6 = 8'b10110110;
+		4'h6: SevenSeg6 = 8'b10111110;
+		4'h7: SevenSeg6 = 8'b11100000;
+		4'h8: SevenSeg6 = 8'b11111110;
+		4'h9: SevenSeg6 = 8'b11110110;
+		4'hC: SevenSeg6 = 8'b01101110;
+		default: SevenSeg6 = 8'b00000000;
+	endcase
+	assign {HEX1[0], HEX1[1], HEX1[2], HEX1[3], HEX1[4], HEX1[5], HEX1[6], HEX1[7]} = ~SevenSeg6;
+	
+	reg [7:0] SevenSeg7; // auxiliar
+	always @(*)
+	case(display4) // variavel q vai mudar o negocio
+		4'h0: SevenSeg7 = 8'b11111100;
+		4'h1: SevenSeg7 = 8'b01100000;
+		4'h2: SevenSeg7 = 8'b11011010;
+		4'h3: SevenSeg7 = 8'b11110010;
+		4'h4: SevenSeg7 = 8'b01100110;
+		4'h5: SevenSeg7 = 8'b10110110;
+		4'h6: SevenSeg7 = 8'b10111110;
+		4'h7: SevenSeg7 = 8'b11100000;
+		4'h8: SevenSeg7 = 8'b11111110;
+		4'h9: SevenSeg7 = 8'b11110110;
+		4'hC: SevenSeg7 = 8'b01101110;
+		default: SevenSeg7 = 8'b00000000;
+	endcase
+	assign {HEX0[0], HEX0[1], HEX0[2], HEX0[3], HEX0[4], HEX0[5], HEX0[6], HEX0[7]} = ~SevenSeg7;
+	
+	
+endmodule

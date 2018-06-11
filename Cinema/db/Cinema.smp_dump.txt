@@ -1,0 +1,84 @@
+
+State Machine - |Cinema|display4
+Name display4.00001100 display4.00001001 display4.00001000 display4.00000111 display4.00000110 display4.00000101 display4.00000100 display4.00000011 display4.00000010 display4.00000001 display4.00000000 
+display4.00000000 0 0 0 0 0 0 0 0 0 0 0 
+display4.00000001 0 0 0 0 0 0 0 0 0 1 1 
+display4.00000010 0 0 0 0 0 0 0 0 1 0 1 
+display4.00000011 0 0 0 0 0 0 0 1 0 0 1 
+display4.00000100 0 0 0 0 0 0 1 0 0 0 1 
+display4.00000101 0 0 0 0 0 1 0 0 0 0 1 
+display4.00000110 0 0 0 0 1 0 0 0 0 0 1 
+display4.00000111 0 0 0 1 0 0 0 0 0 0 1 
+display4.00001000 0 0 1 0 0 0 0 0 0 0 1 
+display4.00001001 0 1 0 0 0 0 0 0 0 0 1 
+display4.00001100 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |Cinema|display3
+Name display3.00001100 display3.00001001 display3.00001000 display3.00000111 display3.00000110 display3.00000101 display3.00000100 display3.00000011 display3.00000010 display3.00000001 display3.00000000 
+display3.00000000 0 0 0 0 0 0 0 0 0 0 0 
+display3.00000001 0 0 0 0 0 0 0 0 0 1 1 
+display3.00000010 0 0 0 0 0 0 0 0 1 0 1 
+display3.00000011 0 0 0 0 0 0 0 1 0 0 1 
+display3.00000100 0 0 0 0 0 0 1 0 0 0 1 
+display3.00000101 0 0 0 0 0 1 0 0 0 0 1 
+display3.00000110 0 0 0 0 1 0 0 0 0 0 1 
+display3.00000111 0 0 0 1 0 0 0 0 0 0 1 
+display3.00001000 0 0 1 0 0 0 0 0 0 0 1 
+display3.00001001 0 1 0 0 0 0 0 0 0 0 1 
+display3.00001100 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |Cinema|display2
+Name display2.00001100 display2.00001001 display2.00001000 display2.00000111 display2.00000110 display2.00000101 display2.00000100 display2.00000011 display2.00000010 display2.00000001 display2.00000000 
+display2.00000000 0 0 0 0 0 0 0 0 0 0 0 
+display2.00000001 0 0 0 0 0 0 0 0 0 1 1 
+display2.00000010 0 0 0 0 0 0 0 0 1 0 1 
+display2.00000011 0 0 0 0 0 0 0 1 0 0 1 
+display2.00000100 0 0 0 0 0 0 1 0 0 0 1 
+display2.00000101 0 0 0 0 0 1 0 0 0 0 1 
+display2.00000110 0 0 0 0 1 0 0 0 0 0 1 
+display2.00000111 0 0 0 1 0 0 0 0 0 0 1 
+display2.00001000 0 0 1 0 0 0 0 0 0 0 1 
+display2.00001001 0 1 0 0 0 0 0 0 0 0 1 
+display2.00001100 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |Cinema|display1
+Name display1.00001100 display1.00001001 display1.00001000 display1.00000111 display1.00000110 display1.00000101 display1.00000100 display1.00000011 display1.00000010 display1.00000001 display1.00000000 
+display1.00000000 0 0 0 0 0 0 0 0 0 0 0 
+display1.00000001 0 0 0 0 0 0 0 0 0 1 1 
+display1.00000010 0 0 0 0 0 0 0 0 1 0 1 
+display1.00000011 0 0 0 0 0 0 0 1 0 0 1 
+display1.00000100 0 0 0 0 0 0 1 0 0 0 1 
+display1.00000101 0 0 0 0 0 1 0 0 0 0 1 
+display1.00000110 0 0 0 0 1 0 0 0 0 0 1 
+display1.00000111 0 0 0 1 0 0 0 0 0 0 1 
+display1.00001000 0 0 1 0 0 0 0 0 0 0 1 
+display1.00001001 0 1 0 0 0 0 0 0 0 0 1 
+display1.00001100 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |Cinema|dHorario
+Name dHorario.00001100 dHorario.00001001 dHorario.00001000 dHorario.00000111 dHorario.00000110 dHorario.00000101 dHorario.00000100 dHorario.00000011 dHorario.00000010 dHorario.00000001 dHorario.00000000 
+dHorario.00000000 0 0 0 0 0 0 0 0 0 0 0 
+dHorario.00000001 0 0 0 0 0 0 0 0 0 1 1 
+dHorario.00000010 0 0 0 0 0 0 0 0 1 0 1 
+dHorario.00000011 0 0 0 0 0 0 0 1 0 0 1 
+dHorario.00000100 0 0 0 0 0 0 1 0 0 0 1 
+dHorario.00000101 0 0 0 0 0 1 0 0 0 0 1 
+dHorario.00000110 0 0 0 0 1 0 0 0 0 0 1 
+dHorario.00000111 0 0 0 1 0 0 0 0 0 0 1 
+dHorario.00001000 0 0 1 0 0 0 0 0 0 0 1 
+dHorario.00001001 0 1 0 0 0 0 0 0 0 0 1 
+dHorario.00001100 1 0 0 0 0 0 0 0 0 0 1 
+
+State Machine - |Cinema|dFilme
+Name dFilme.00001100 dFilme.00001001 dFilme.00001000 dFilme.00000111 dFilme.00000110 dFilme.00000101 dFilme.00000100 dFilme.00000011 dFilme.00000010 dFilme.00000001 dFilme.00000000 
+dFilme.00000000 0 0 0 0 0 0 0 0 0 0 0 
+dFilme.00000001 0 0 0 0 0 0 0 0 0 1 1 
+dFilme.00000010 0 0 0 0 0 0 0 0 1 0 1 
+dFilme.00000011 0 0 0 0 0 0 0 1 0 0 1 
+dFilme.00000100 0 0 0 0 0 0 1 0 0 0 1 
+dFilme.00000101 0 0 0 0 0 1 0 0 0 0 1 
+dFilme.00000110 0 0 0 0 1 0 0 0 0 0 1 
+dFilme.00000111 0 0 0 1 0 0 0 0 0 0 1 
+dFilme.00001000 0 0 1 0 0 0 0 0 0 0 1 
+dFilme.00001001 0 1 0 0 0 0 0 0 0 0 1 
+dFilme.00001100 1 0 0 0 0 0 0 0 0 0 1 

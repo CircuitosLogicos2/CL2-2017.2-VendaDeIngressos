@@ -1,0 +1,662 @@
+Analysis & Synthesis report for Cinema
+Fri Jun 08 16:49:20 2018
+Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |Cinema|display4
+  9. State Machine - |Cinema|display3
+ 10. State Machine - |Cinema|display2
+ 11. State Machine - |Cinema|display1
+ 12. State Machine - |Cinema|dHorario
+ 13. State Machine - |Cinema|dFilme
+ 14. Registers Removed During Synthesis
+ 15. General Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Analysis & Synthesis Messages
+ 18. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2010 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                      ;
++------------------------------------+----------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Fri Jun 08 16:49:20 2018        ;
+; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
+; Revision Name                      ; Cinema                                       ;
+; Top-level Entity Name              ; Cinema                                       ;
+; Family                             ; Cyclone II                                   ;
+; Total logic elements               ; 425                                          ;
+;     Total combinational functions  ; 424                                          ;
+;     Dedicated logic registers      ; 145                                          ;
+; Total registers                    ; 145                                          ;
+; Total pins                         ; 105                                          ;
+; Total virtual pins                 ; 0                                            ;
+; Total memory bits                  ; 0                                            ;
+; Embedded Multiplier 9-bit elements ; 0                                            ;
+; Total PLLs                         ; 0                                            ;
++------------------------------------+----------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP2C35F672C6       ;                    ;
+; Top-level entity name                                                      ; Cinema             ; Cinema             ;
+; Family name                                                                ; Cyclone II         ; Stratix II         ;
+; Use Generated Physical Constraints File                                    ; Off                ;                    ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; Off                ; Off                ;
+; Show Parameter Settings Tables in Synthesis Report                         ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                ;
++----------------------------------+-----------------+------------------------+-----------------------------------------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path            ;
++----------------------------------+-----------------+------------------------+-----------------------------------------+
+; ../Verilog/Cinema.v              ; yes             ; User Verilog HDL File  ; C:/Users/aluno/Desktop/Verilog/Cinema.v ;
++----------------------------------+-----------------+------------------------+-----------------------------------------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 425   ;
+;                                             ;       ;
+; Total combinational functions               ; 424   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 127   ;
+;     -- 3 input functions                    ; 114   ;
+;     -- <=2 input functions                  ; 183   ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 210   ;
+;     -- arithmetic mode                      ; 214   ;
+;                                             ;       ;
+; Total registers                             ; 145   ;
+;     -- Dedicated logic registers            ; 145   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 105   ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 145   ;
+; Total fan-out                               ; 1656  ;
+; Average fan-out                             ; 2.46  ;
++---------------------------------------------+-------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; |Cinema                    ; 424 (424)         ; 145 (145)    ; 0           ; 0            ; 0       ; 0         ; 105  ; 0            ; |Cinema             ; work         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Cinema|display4                                                                                                                                                                                                              ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+; Name              ; display4.00001100 ; display4.00001001 ; display4.00001000 ; display4.00000111 ; display4.00000110 ; display4.00000101 ; display4.00000100 ; display4.00000011 ; display4.00000010 ; display4.00000001 ; display4.00000000 ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+; display4.00000000 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ;
+; display4.00000001 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 1                 ;
+; display4.00000010 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 1                 ;
+; display4.00000011 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 1                 ;
+; display4.00000100 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display4.00000101 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display4.00000110 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display4.00000111 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display4.00001000 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display4.00001001 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display4.00001100 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Cinema|display3                                                                                                                                                                                                              ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+; Name              ; display3.00001100 ; display3.00001001 ; display3.00001000 ; display3.00000111 ; display3.00000110 ; display3.00000101 ; display3.00000100 ; display3.00000011 ; display3.00000010 ; display3.00000001 ; display3.00000000 ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+; display3.00000000 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ;
+; display3.00000001 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 1                 ;
+; display3.00000010 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 1                 ;
+; display3.00000011 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 1                 ;
+; display3.00000100 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display3.00000101 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display3.00000110 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display3.00000111 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display3.00001000 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display3.00001001 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display3.00001100 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Cinema|display2                                                                                                                                                                                                              ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+; Name              ; display2.00001100 ; display2.00001001 ; display2.00001000 ; display2.00000111 ; display2.00000110 ; display2.00000101 ; display2.00000100 ; display2.00000011 ; display2.00000010 ; display2.00000001 ; display2.00000000 ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+; display2.00000000 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ;
+; display2.00000001 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 1                 ;
+; display2.00000010 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 1                 ;
+; display2.00000011 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 1                 ;
+; display2.00000100 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display2.00000101 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display2.00000110 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display2.00000111 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display2.00001000 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display2.00001001 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display2.00001100 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Cinema|display1                                                                                                                                                                                                              ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+; Name              ; display1.00001100 ; display1.00001001 ; display1.00001000 ; display1.00000111 ; display1.00000110 ; display1.00000101 ; display1.00000100 ; display1.00000011 ; display1.00000010 ; display1.00000001 ; display1.00000000 ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+; display1.00000000 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ;
+; display1.00000001 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 1                 ;
+; display1.00000010 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 1                 ;
+; display1.00000011 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 1                 ;
+; display1.00000100 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display1.00000101 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display1.00000110 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display1.00000111 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display1.00001000 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display1.00001001 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; display1.00001100 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Cinema|dHorario                                                                                                                                                                                                              ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+; Name              ; dHorario.00001100 ; dHorario.00001001 ; dHorario.00001000 ; dHorario.00000111 ; dHorario.00000110 ; dHorario.00000101 ; dHorario.00000100 ; dHorario.00000011 ; dHorario.00000010 ; dHorario.00000001 ; dHorario.00000000 ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+; dHorario.00000000 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ;
+; dHorario.00000001 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 1                 ;
+; dHorario.00000010 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 1                 ;
+; dHorario.00000011 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 1                 ;
+; dHorario.00000100 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; dHorario.00000101 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; dHorario.00000110 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; dHorario.00000111 ; 0                 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; dHorario.00001000 ; 0                 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; dHorario.00001001 ; 0                 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
+; dHorario.00001100 ; 1                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 0                 ; 1                 ;
++-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+-------------------+
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Cinema|dFilme                                                                                                                                                                                        ;
++-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+; Name            ; dFilme.00001100 ; dFilme.00001001 ; dFilme.00001000 ; dFilme.00000111 ; dFilme.00000110 ; dFilme.00000101 ; dFilme.00000100 ; dFilme.00000011 ; dFilme.00000010 ; dFilme.00000001 ; dFilme.00000000 ;
++-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+; dFilme.00000000 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ;
+; dFilme.00000001 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 1               ;
+; dFilme.00000010 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 1               ;
+; dFilme.00000011 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 1               ;
+; dFilme.00000100 ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 1               ;
+; dFilme.00000101 ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; dFilme.00000110 ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; dFilme.00000111 ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; dFilme.00001000 ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; dFilme.00001001 ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; dFilme.00001100 ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
++-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+
+
++-------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                        ;
++--------------------------------------------------+----------------------------------------+
+; Register name                                    ; Reason for Removal                     ;
++--------------------------------------------------+----------------------------------------+
+; dinheiroFeito[3,11,15,17,19]                     ; Merged with pago[11]                   ;
+; pago[27,31]                                      ; Merged with pago[11]                   ;
+; dinheiroFeito[1,7,18,20,31]                      ; Merged with pago[11]                   ;
+; pago[8,20..23,25,29]                             ; Merged with pago[11]                   ;
+; dinheiroFeito[30]                                ; Merged with pago[11]                   ;
+; pago[16..19]                                     ; Merged with pago[11]                   ;
+; dinheiroFeito[29]                                ; Merged with pago[11]                   ;
+; pago[14..15]                                     ; Merged with pago[11]                   ;
+; dinheiroFeito[10,21]                             ; Merged with pago[11]                   ;
+; pago[2]                                          ; Merged with pago[11]                   ;
+; dinheiroFeito[5..6,8,12..13]                     ; Merged with pago[10]                   ;
+; pago[1,24,26,28,30]                              ; Merged with pago[10]                   ;
+; dinheiroFeito[27..28]                            ; Merged with pago[10]                   ;
+; pago[7,12..13]                                   ; Merged with pago[10]                   ;
+; dinheiroFeito[25..26]                            ; Merged with pago[10]                   ;
+; dinheiroFeito[9,14,22]                           ; Merged with pago[9]                    ;
+; pago[5]                                          ; Merged with pago[9]                    ;
+; dinheiroFeito[24]                                ; Merged with pago[9]                    ;
+; pago[4]                                          ; Merged with pago[9]                    ;
+; dinheiroFeito[16]                                ; Merged with pago[9]                    ;
+; pago[3]                                          ; Merged with pago[9]                    ;
+; dinheiroFeito[2,4]                               ; Merged with pago[9]                    ;
+; pago[6]                                          ; Merged with pago[9]                    ;
+; dinheiroFeito[23]                                ; Merged with pago[9]                    ;
+; dinheiroFeito[0]                                 ; Merged with pago[0]                    ;
+; trocoFeito[9,11,15..21,29]                       ; Merged with trocoFeito[31]             ;
+; trocoFeito[1..5,8,10,22..28]                     ; Merged with trocoFeito[30]             ;
+; trocoFeito[6..7,12..13]                          ; Merged with trocoFeito[14]             ;
+; assentoEscolhido[3,5,7,24..25,27,29,31]          ; Merged with assentoEscolhido[1]        ;
+; assentoEscolhido[4,6,8..12,14,16,18,20,22,26,30] ; Merged with assentoEscolhido[2]        ;
+; assentoEscolhido[15,17,19,21,23,28]              ; Merged with assentoEscolhido[13]       ;
+; valor[12,14,16,18,20,22,24,26,28,30]             ; Merged with valor[10]                  ;
+; valor[13,15,17,19,21,23,25,27,29,31]             ; Merged with valor[11]                  ;
+; horarioEscolhido[3,5,7,9,11..31]                 ; Merged with horarioEscolhido[1]        ;
+; horario[2..7,13,15,17,19,21,23,25,27,29,31]      ; Merged with horarioEscolhido[1]        ;
+; horario[16,20,24,28]                             ; Merged with horarioEscolhido[2]        ;
+; horarioEscolhido[4,6,8,10]                       ; Merged with horarioEscolhido[2]        ;
+; horario[14,18,22,26,30]                          ; Merged with horarioEscolhido[2]        ;
+; horario[9..12]                                   ; Merged with horario[8]                 ;
+; essaMerda[2..31]                                 ; Merged with essaMerda[1]               ;
+; filmeEscolhido[3,5,7,9,11,13,17,19,23,25,27]     ; Merged with filmeEscolhido[1]          ;
+; filmeEscolhido[6,10,14..15,18,22,26,30]          ; Merged with filmeEscolhido[2]          ;
+; filmeEscolhido[8,12,16,20..21,24,28..29,31]      ; Merged with filmeEscolhido[4]          ;
+; filme[3..31]                                     ; Merged with filme[2]                   ;
+; pago[9..10]                                      ; Merged with pago[11]                   ;
+; trocoFeito[14,30]                                ; Merged with trocoFeito[31]             ;
+; assentoEscolhido[2,13]                           ; Merged with assentoEscolhido[1]        ;
+; valor[11]                                        ; Merged with valor[10]                  ;
+; horario[8]                                       ; Merged with horarioEscolhido[1]        ;
+; horarioEscolhido[2]                              ; Merged with horarioEscolhido[1]        ;
+; filmeEscolhido[2,4]                              ; Merged with filmeEscolhido[1]          ;
+; pago[11]                                         ; Stuck at GND due to stuck port data_in ;
+; trocoFeito[31]                                   ; Stuck at GND due to stuck port data_in ;
+; assentoEscolhido[1]                              ; Stuck at GND due to stuck port data_in ;
+; horarioEscolhido[1]                              ; Stuck at GND due to stuck port data_in ;
+; essaMerda[1]                                     ; Stuck at GND due to stuck port data_in ;
+; filmeEscolhido[1]                                ; Stuck at GND due to stuck port data_in ;
+; filme[2]                                         ; Stuck at GND due to stuck port data_in ;
+; pago[0]                                          ; Stuck at GND due to stuck port data_in ;
+; trocoFeito[0]                                    ; Stuck at GND due to stuck port data_in ;
+; display4~12                                      ; Lost fanout                            ;
+; display4~13                                      ; Lost fanout                            ;
+; display4~14                                      ; Lost fanout                            ;
+; display4~15                                      ; Lost fanout                            ;
+; display4~16                                      ; Lost fanout                            ;
+; display4~17                                      ; Lost fanout                            ;
+; display4~18                                      ; Lost fanout                            ;
+; display4~19                                      ; Lost fanout                            ;
+; display3~12                                      ; Lost fanout                            ;
+; display3~13                                      ; Lost fanout                            ;
+; display3~14                                      ; Lost fanout                            ;
+; display3~15                                      ; Lost fanout                            ;
+; display3~16                                      ; Lost fanout                            ;
+; display3~17                                      ; Lost fanout                            ;
+; display3~18                                      ; Lost fanout                            ;
+; display3~19                                      ; Lost fanout                            ;
+; display2~12                                      ; Lost fanout                            ;
+; display2~13                                      ; Lost fanout                            ;
+; display2~14                                      ; Lost fanout                            ;
+; display2~15                                      ; Lost fanout                            ;
+; display2~16                                      ; Lost fanout                            ;
+; display2~17                                      ; Lost fanout                            ;
+; display2~18                                      ; Lost fanout                            ;
+; display2~19                                      ; Lost fanout                            ;
+; display1~12                                      ; Lost fanout                            ;
+; display1~13                                      ; Lost fanout                            ;
+; display1~14                                      ; Lost fanout                            ;
+; display1~15                                      ; Lost fanout                            ;
+; display1~16                                      ; Lost fanout                            ;
+; display1~17                                      ; Lost fanout                            ;
+; display1~18                                      ; Lost fanout                            ;
+; display1~19                                      ; Lost fanout                            ;
+; dHorario~12                                      ; Lost fanout                            ;
+; dHorario~13                                      ; Lost fanout                            ;
+; dHorario~14                                      ; Lost fanout                            ;
+; dHorario~15                                      ; Lost fanout                            ;
+; dHorario~16                                      ; Lost fanout                            ;
+; dHorario~17                                      ; Lost fanout                            ;
+; dHorario~18                                      ; Lost fanout                            ;
+; dHorario~19                                      ; Lost fanout                            ;
+; dFilme~12                                        ; Lost fanout                            ;
+; dFilme~13                                        ; Lost fanout                            ;
+; dFilme~14                                        ; Lost fanout                            ;
+; dFilme~15                                        ; Lost fanout                            ;
+; dFilme~16                                        ; Lost fanout                            ;
+; dFilme~17                                        ; Lost fanout                            ;
+; dFilme~18                                        ; Lost fanout                            ;
+; dFilme~19                                        ; Lost fanout                            ;
+; display4.00001001                                ; Lost fanout                            ;
+; display3.00001001                                ; Lost fanout                            ;
+; display2.00001001                                ; Lost fanout                            ;
+; display1.00001001                                ; Lost fanout                            ;
+; dHorario.00001001                                ; Lost fanout                            ;
+; dFilme.00001001                                  ; Lost fanout                            ;
+; display4.00000001                                ; Stuck at GND due to stuck port data_in ;
+; display4.00000100                                ; Stuck at GND due to stuck port data_in ;
+; display4.00001100                                ; Stuck at GND due to stuck port data_in ;
+; display4.00000101                                ; Stuck at GND due to stuck port data_in ;
+; display4.00000110                                ; Stuck at GND due to stuck port data_in ;
+; display4.00000010                                ; Stuck at GND due to stuck port data_in ;
+; display4.00000111                                ; Stuck at GND due to stuck port data_in ;
+; display4.00001000                                ; Stuck at GND due to stuck port data_in ;
+; display4.00000011                                ; Stuck at GND due to stuck port data_in ;
+; dHorario.00000100                                ; Stuck at GND due to stuck port data_in ;
+; dHorario.00001100                                ; Stuck at GND due to stuck port data_in ;
+; dHorario.00000101                                ; Stuck at GND due to stuck port data_in ;
+; dHorario.00000110                                ; Stuck at GND due to stuck port data_in ;
+; dHorario.00000111                                ; Stuck at GND due to stuck port data_in ;
+; dHorario.00001000                                ; Stuck at GND due to stuck port data_in ;
+; dHorario.00000011                                ; Stuck at GND due to stuck port data_in ;
+; dFilme.00000100                                  ; Stuck at GND due to stuck port data_in ;
+; dFilme.00001100                                  ; Stuck at GND due to stuck port data_in ;
+; dFilme.00000101                                  ; Stuck at GND due to stuck port data_in ;
+; dFilme.00000110                                  ; Stuck at GND due to stuck port data_in ;
+; dFilme.00000111                                  ; Stuck at GND due to stuck port data_in ;
+; dFilme.00001000                                  ; Stuck at GND due to stuck port data_in ;
+; dFilme.00000011                                  ; Stuck at GND due to stuck port data_in ;
+; display3.00000001                                ; Stuck at GND due to stuck port data_in ;
+; display3.00000100                                ; Stuck at GND due to stuck port data_in ;
+; display3.00001100                                ; Stuck at GND due to stuck port data_in ;
+; display3.00000101                                ; Stuck at GND due to stuck port data_in ;
+; display3.00000110                                ; Stuck at GND due to stuck port data_in ;
+; display3.00000010                                ; Stuck at GND due to stuck port data_in ;
+; display3.00000111                                ; Stuck at GND due to stuck port data_in ;
+; display3.00001000                                ; Stuck at GND due to stuck port data_in ;
+; display3.00000011                                ; Stuck at GND due to stuck port data_in ;
+; display2.00000001                                ; Stuck at GND due to stuck port data_in ;
+; display2.00001100                                ; Stuck at GND due to stuck port data_in ;
+; display2.00000101                                ; Stuck at GND due to stuck port data_in ;
+; display2.00000010                                ; Stuck at GND due to stuck port data_in ;
+; display2.00000111                                ; Stuck at GND due to stuck port data_in ;
+; display2.00001000                                ; Stuck at GND due to stuck port data_in ;
+; display2.00000011                                ; Stuck at GND due to stuck port data_in ;
+; display1.00000100                                ; Stuck at GND due to stuck port data_in ;
+; display1.00001100                                ; Stuck at GND due to stuck port data_in ;
+; display1.00000101                                ; Stuck at GND due to stuck port data_in ;
+; display1.00000110                                ; Stuck at GND due to stuck port data_in ;
+; display1.00000010                                ; Stuck at GND due to stuck port data_in ;
+; display1.00000111                                ; Stuck at GND due to stuck port data_in ;
+; display1.00001000                                ; Stuck at GND due to stuck port data_in ;
+; display1.00000011                                ; Stuck at GND due to stuck port data_in ;
+; display3.00000000                                ; Merged with display4.00000000          ;
+; display2.00000100                                ; Merged with dHorario.00000001          ;
+; display2.00000110                                ; Merged with dHorario.00000010          ;
+; display2.00000000                                ; Merged with dHorario.00000000          ;
+; display1.00000000                                ; Merged with dHorario.00000000          ;
+; filme[0]                                         ; Merged with dFilme.00000001            ;
+; filme[1]                                         ; Merged with dFilme.00000010            ;
+; display1.00000001                                ; Merged with dHorario.00000000          ;
+; display4.00000000                                ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 411          ;                                        ;
++--------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 145   ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 125   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |Cinema|valorInserido[9]   ;
+; 6:1                ; 18 bits   ; 72 LEs        ; 36 LEs               ; 36 LEs                 ; Yes        ; |Cinema|LEDR[3]~reg0       ;
+; 4:1                ; 58 bits   ; 116 LEs       ; 116 LEs              ; 0 LEs                  ; No         ; |Cinema|display4           ;
+; 4:1                ; 13 bits   ; 26 LEs        ; 26 LEs               ; 0 LEs                  ; No         ; |Cinema|dFilme             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II Analysis & Synthesis
+    Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
+    Info: Processing started: Fri Jun 08 16:49:18 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Cinema -c Cinema
+Info: Found 1 design units, including 1 entities, in source file /users/aluno/desktop/verilog/cinema.v
+    Info: Found entity 1: Cinema
+Info: Elaborating entity "Cinema" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at Cinema.v(18): object "troco" assigned a value but never read
+Warning (10036): Verilog HDL or VHDL warning at Cinema.v(29): object "essaMerda2" assigned a value but never read
+Warning: Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[0]" is stuck at GND
+    Warning (13410): Pin "HEX0[1]" is stuck at GND
+    Warning (13410): Pin "HEX0[2]" is stuck at GND
+    Warning (13410): Pin "HEX0[3]" is stuck at GND
+    Warning (13410): Pin "HEX0[4]" is stuck at GND
+    Warning (13410): Pin "HEX0[5]" is stuck at GND
+    Warning (13410): Pin "HEX0[6]" is stuck at VCC
+    Warning (13410): Pin "HEX0[7]" is stuck at VCC
+    Warning (13410): Pin "HEX4[1]" is stuck at GND
+    Warning (13410): Pin "HEX4[7]" is stuck at VCC
+    Warning (13410): Pin "HEX5[0]" is stuck at VCC
+    Warning (13410): Pin "HEX5[1]" is stuck at GND
+    Warning (13410): Pin "HEX5[2]" is stuck at GND
+    Warning (13410): Pin "HEX5[3]" is stuck at VCC
+    Warning (13410): Pin "HEX5[4]" is stuck at GND
+    Warning (13410): Pin "HEX5[5]" is stuck at GND
+    Warning (13410): Pin "HEX5[6]" is stuck at GND
+    Warning (13410): Pin "HEX5[7]" is stuck at VCC
+    Warning (13410): Pin "HEX6[1]" is stuck at GND
+    Warning (13410): Pin "HEX6[7]" is stuck at VCC
+    Warning (13410): Pin "HEX7[0]" is stuck at GND
+    Warning (13410): Pin "HEX7[1]" is stuck at VCC
+    Warning (13410): Pin "HEX7[2]" is stuck at VCC
+    Warning (13410): Pin "HEX7[3]" is stuck at VCC
+    Warning (13410): Pin "HEX7[4]" is stuck at GND
+    Warning (13410): Pin "HEX7[5]" is stuck at GND
+    Warning (13410): Pin "HEX7[6]" is stuck at GND
+    Warning (13410): Pin "HEX7[7]" is stuck at VCC
+    Warning (13410): Pin "HEX1[0]" is stuck at GND
+    Warning (13410): Pin "HEX1[1]" is stuck at GND
+    Warning (13410): Pin "HEX1[2]" is stuck at GND
+    Warning (13410): Pin "HEX1[3]" is stuck at GND
+    Warning (13410): Pin "HEX1[4]" is stuck at GND
+    Warning (13410): Pin "HEX1[5]" is stuck at GND
+    Warning (13410): Pin "HEX1[6]" is stuck at VCC
+    Warning (13410): Pin "HEX1[7]" is stuck at VCC
+    Warning (13410): Pin "HEX2[2]" is stuck at GND
+    Warning (13410): Pin "HEX2[5]" is stuck at GND
+    Warning (13410): Pin "HEX2[7]" is stuck at VCC
+    Warning (13410): Pin "HEX3[1]" is stuck at GND
+    Warning (13410): Pin "HEX3[2]" is stuck at GND
+    Warning (13410): Pin "HEX3[6]" is stuck at VCC
+    Warning (13410): Pin "HEX3[7]" is stuck at VCC
+Info: 54 registers lost all their fanouts during netlist optimizations. The first 54 are displayed below.
+    Info: Register "display4~12" lost all its fanouts during netlist optimizations.
+    Info: Register "display4~13" lost all its fanouts during netlist optimizations.
+    Info: Register "display4~14" lost all its fanouts during netlist optimizations.
+    Info: Register "display4~15" lost all its fanouts during netlist optimizations.
+    Info: Register "display4~16" lost all its fanouts during netlist optimizations.
+    Info: Register "display4~17" lost all its fanouts during netlist optimizations.
+    Info: Register "display4~18" lost all its fanouts during netlist optimizations.
+    Info: Register "display4~19" lost all its fanouts during netlist optimizations.
+    Info: Register "display3~12" lost all its fanouts during netlist optimizations.
+    Info: Register "display3~13" lost all its fanouts during netlist optimizations.
+    Info: Register "display3~14" lost all its fanouts during netlist optimizations.
+    Info: Register "display3~15" lost all its fanouts during netlist optimizations.
+    Info: Register "display3~16" lost all its fanouts during netlist optimizations.
+    Info: Register "display3~17" lost all its fanouts during netlist optimizations.
+    Info: Register "display3~18" lost all its fanouts during netlist optimizations.
+    Info: Register "display3~19" lost all its fanouts during netlist optimizations.
+    Info: Register "display2~12" lost all its fanouts during netlist optimizations.
+    Info: Register "display2~13" lost all its fanouts during netlist optimizations.
+    Info: Register "display2~14" lost all its fanouts during netlist optimizations.
+    Info: Register "display2~15" lost all its fanouts during netlist optimizations.
+    Info: Register "display2~16" lost all its fanouts during netlist optimizations.
+    Info: Register "display2~17" lost all its fanouts during netlist optimizations.
+    Info: Register "display2~18" lost all its fanouts during netlist optimizations.
+    Info: Register "display2~19" lost all its fanouts during netlist optimizations.
+    Info: Register "display1~12" lost all its fanouts during netlist optimizations.
+    Info: Register "display1~13" lost all its fanouts during netlist optimizations.
+    Info: Register "display1~14" lost all its fanouts during netlist optimizations.
+    Info: Register "display1~15" lost all its fanouts during netlist optimizations.
+    Info: Register "display1~16" lost all its fanouts during netlist optimizations.
+    Info: Register "display1~17" lost all its fanouts during netlist optimizations.
+    Info: Register "display1~18" lost all its fanouts during netlist optimizations.
+    Info: Register "display1~19" lost all its fanouts during netlist optimizations.
+    Info: Register "dHorario~12" lost all its fanouts during netlist optimizations.
+    Info: Register "dHorario~13" lost all its fanouts during netlist optimizations.
+    Info: Register "dHorario~14" lost all its fanouts during netlist optimizations.
+    Info: Register "dHorario~15" lost all its fanouts during netlist optimizations.
+    Info: Register "dHorario~16" lost all its fanouts during netlist optimizations.
+    Info: Register "dHorario~17" lost all its fanouts during netlist optimizations.
+    Info: Register "dHorario~18" lost all its fanouts during netlist optimizations.
+    Info: Register "dHorario~19" lost all its fanouts during netlist optimizations.
+    Info: Register "dFilme~12" lost all its fanouts during netlist optimizations.
+    Info: Register "dFilme~13" lost all its fanouts during netlist optimizations.
+    Info: Register "dFilme~14" lost all its fanouts during netlist optimizations.
+    Info: Register "dFilme~15" lost all its fanouts during netlist optimizations.
+    Info: Register "dFilme~16" lost all its fanouts during netlist optimizations.
+    Info: Register "dFilme~17" lost all its fanouts during netlist optimizations.
+    Info: Register "dFilme~18" lost all its fanouts during netlist optimizations.
+    Info: Register "dFilme~19" lost all its fanouts during netlist optimizations.
+    Info: Register "display4.00001001" lost all its fanouts during netlist optimizations.
+    Info: Register "display3.00001001" lost all its fanouts during netlist optimizations.
+    Info: Register "display2.00001001" lost all its fanouts during netlist optimizations.
+    Info: Register "display1.00001001" lost all its fanouts during netlist optimizations.
+    Info: Register "dHorario.00001001" lost all its fanouts during netlist optimizations.
+    Info: Register "dFilme.00001001" lost all its fanouts during netlist optimizations.
+Info: Generated suppressed messages file C:/Users/aluno/Desktop/Cinema/Cinema.map.smsg
+Info: Implemented 533 device resources after synthesis - the final resource count might be different
+    Info: Implemented 23 input pins
+    Info: Implemented 82 output pins
+    Info: Implemented 428 logic cells
+Info: Quartus II Analysis & Synthesis was successful. 0 errors, 46 warnings
+    Info: Peak virtual memory: 211 megabytes
+    Info: Processing ended: Fri Jun 08 16:49:20 2018
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in C:/Users/aluno/Desktop/Cinema/Cinema.map.smsg.
+
+
